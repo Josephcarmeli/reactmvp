@@ -1,4 +1,3 @@
-import Logo from "./../assets/images/Logo.png";
 import {
   HiHome,
   HiMagnifyingGlass,
@@ -9,9 +8,13 @@ import {
 import { HiPlus, HiDotsVertical } from "react-icons/hi";
 import HeaderItem from "./HeaderItem";
 import { useState } from "react";
+import Signup from "./Signup";
+import Login from "./Login";
 
 function Header() {
   const [toggle, setToggle] = useState(false);
+  const [showLoginForm, setShowLoginForm] = useState(false);
+  const [showSignupForm, setShowSignupForm] = useState(false);
   const menu = [
     {
       name: "HOME",
@@ -37,11 +40,19 @@ function Header() {
       name: "SERIES",
       icon: HiTv,
     },
+    {
+      name: "LOGIN",
+      icon: HiPlayCircle,
+    },
+    {
+      name: "SIGNUP",
+      icon: HiPlayCircle,
+    },
   ];
+
   return (
     <div className="flex items-center justify-between p-5">
       <div className="flex gap-8 items-center">
-        <img src={Logo} className="w-[80px] md:w-[115px] object-cover" />
         <div className="hidden md:flex gap-8">
           {menu.map((item) => (
             <HeaderItem name={item.name} Icon={item.icon} />
@@ -67,12 +78,27 @@ function Header() {
           </div>
         </div>
       </div>
-      <img
-        src="https://ps.w.org/user-avatar-reloaded/assets/icon-256x256.png?rev=2540745"
-        className="w-[40px] rounded-full"
-      />
     </div>
   );
 }
 
 export default Header;
+
+{
+  /* <button
+        className=" bg-inherit text-white flex items-center gap-3
+        text-[15px] font-semibold cursor-pointer hover:underline
+        underline-offset-8 mb-2"
+        onClick={() => setShowLoginForm(true)}
+      >
+        Login
+      </button>
+      <button
+        className="bg-inherit text-white"
+        onClickj={() => setShowSignupForm(true)}
+      >
+        Sign Up
+      </button>
+      {showLoginForm && <Login setShowLoginForm={setShowLoginForm} />}
+      {showSignupForm && <Signup setShowSignupForm={setShowSignupForm} />} */
+}
