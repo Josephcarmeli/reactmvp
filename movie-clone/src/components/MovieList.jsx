@@ -1,8 +1,8 @@
 import React, { useEffect, useState, useRef } from "react";
-import globalapi from "./../services/globalapi";
+import globalapi from "../services/globalapi";
 import MovieCard from "./MovieCard";
 import { IoChevronBackOutline, IoChevronForwardOutline } from "react-icons/io5";
-import HrMovieCard from "./HrMovieCard";
+import HrMovieCard from ".././components/HrMovieCard";
 
 function MovieList({ genreId, index_ }) {
   const [movieList, setMovieList] = useState([]);
