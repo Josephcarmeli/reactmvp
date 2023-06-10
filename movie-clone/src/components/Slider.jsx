@@ -15,7 +15,7 @@ function Slider() {
 
   const getTrendingMovies = () => {
     globalapi.getTrendingVideos.then((res) => {
-      console.log(res.data.results);
+      //console.log(res.data.results);
       setMovieList(res.data.results);
     });
   };
@@ -45,6 +45,7 @@ function Slider() {
       >
         {movieList.map((item) => (
           <img
+            key={item.id}
             src={IMAGE_BASE_URL + item.backdrop_path}
             className="min-w-full  md:h-[310px] object-cover
             object-left-top mr-5 rounded-md hover:border-[4px]

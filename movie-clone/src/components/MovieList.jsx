@@ -13,7 +13,7 @@ function MovieList({ genreId, index_ }) {
 
   const getMovieByGenreId = () => {
     globalapi.getMovieByGenreId(genreId).then((res) => {
-      console.log(res.data.results);
+      //console.log(res.data.results);
       setMovieList(res.data.results);
     });
   };
@@ -40,13 +40,13 @@ function MovieList({ genreId, index_ }) {
         className="flex overflow-x-auto gap-8 scrollbar-hide scroll-smooth pt-5 px-3 pb-5"
       >
         {movieList.map((item, index) => (
-          <>
+          <React.Fragment key={index}>
             {index_ % 3 == 0 ? (
               <HrMovieCard movie={item} />
             ) : (
               <MovieCard movie={item} />
             )}
-          </>
+          </React.Fragment>
         ))}
       </div>
       <IoChevronForwardOutline

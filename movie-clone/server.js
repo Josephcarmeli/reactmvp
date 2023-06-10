@@ -32,6 +32,22 @@ server.post("/api/users", (req, res) => {
     .catch((e) => console.error(e));
 });
 
+server.post("/api/users/login", (req, res) => {
+  const { username, password } = req.body;
+  db.query("SELECT * FROM users WHERE username = $1 AND password = $2", [
+    username,
+    password,
+  ])
+    .then((result) => {
+      if (result.rows.length === 0) {
+        res.sendStatus(401);
+      } else {
+        res.status(200).json(result.rows[0]);
+      }
+    })
+    .catch((e) => console.error(e));
+});
+
 server.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
