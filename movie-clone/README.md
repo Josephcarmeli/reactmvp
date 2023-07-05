@@ -1,6 +1,8 @@
 # Vite Disney Clone
 
+
 A Disney clone app thats built with React, Vite, Express, and PostgreSQL.
+
 
 ## Features
 
