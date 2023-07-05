@@ -1,5 +1,4 @@
-import React from "react";
-import GenresList from "./../constant/GenresList";
+import GenresList from "../constant/GenresList";
 import MovieList from "./MovieList";
 
 function GenreMovieList() {
@@ -16,6 +15,10 @@ function GenreMovieList() {
       )}
     </div>
   );
+}
+
+{
+  /* <p>{isLiked ? <AiFillHeart /> : <AiOutlineHeart />}</p> */
 }
 
 export default GenreMovieList;

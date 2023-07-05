@@ -1,13 +1,15 @@
 import pg from "pg";
 import express from "express";
 import dotenv from "dotenv";
-import axios from "axios";
+import jwt from "jsonwebtoken";
+import cors from "cors";
 
 dotenv.config();
 const server = express();
 server.use(express.json());
+server.use(cors());
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
@@ -16,19 +18,19 @@ const db = new pg.Pool({
   },
 });
 
-server.get("/api/users", (req, res) => {
-  db.query("SELECT * FROM users")
-    .then((result) => res.json(result.rows))
-    .catch((e) => console.error(e));
-});
-
-server.post("/api/users", (req, res) => {
+server.post("/api/users/signup", (req, res) => {
   const { username, email, password } = req.body;
   db.query(
-    "INSERT INTO users (username, email, password) VALUES ($1, $2, $3)",
+    "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *",
     [username, email, password]
   )
-    .then(() => res.sendStatus(201))
+    .then((result) => {
+      if (result.rows.length === 0) {
+        res.sendStatus(401);
+      } else {
+        res.status(200).json(result.rows[0]);
+      }
+    })
     .catch((e) => console.error(e));
 });
 
