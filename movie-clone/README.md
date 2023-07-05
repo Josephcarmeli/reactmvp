@@ -1,13 +1,10 @@
 # Vite Disney Clone
 
-A Disney clone app that allows users to watch trailers and search for movies. It's built with React, Vite, Express, and PostgreSQL.
+A Disney clone app it's built with React, Vite, Express, and PostgreSQL.
 
 ## Features
 
 - Movie listings
-- Movie search
-- Trailer viewing
-- Favorite marking
 
 ## Setup
 
